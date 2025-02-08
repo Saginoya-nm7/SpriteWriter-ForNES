@@ -36,17 +36,17 @@ fn main() {
     let char_rom_start = 0x10 + buf[4] as u16 * 0x4000;
     let char_rom_end = char_rom_start + buf[5] as u16 * 0x2000;
 
-    println!("{:.?} {:.?}", char_rom_start, char_rom_end);
+    println!("{:?} {:?}", char_rom_start, char_rom_end);
 
     create_character_graphic(&buf[char_rom_start as usize..char_rom_end as usize]);
 }
 
 fn create_character_graphic(char_rom: &[u8]) {
     let sprite_num: u32 = (char_rom.len() >> 4) as u32;
-    println!("Sprite Num => {:.?}", sprite_num);
+    println!("Sprite Num => {:?}", sprite_num);
     let h_num: u32 = 8;
     let w_num: u32 = -(-(sprite_num as i32) / h_num as i32) as u32;
-    println!("{:.?}, {:.?}", w_num, h_num);
+    println!("{:?}, {:?}", w_num, h_num);
 
     const SPRITE_DSIZE: u32 = 0x10;
     const SPRITE_WSIZE: u32 = 0x8;
